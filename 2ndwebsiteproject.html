@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ziyaretçi Sayacı</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url('https://source.unsplash.com/random/1920x1080/?country');
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+        }
+
+        #counter {
+            font-size: 3em;
+            color: white;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+    </style>
+</head>
+<body>
+    <div id="counter">bu sayty jemi zyyarat eden adam: </div>
+
+    <script>
+        // Ziyaretçi sayısını saklamak için localStorage kullanımı
+        let visitorCount = parseInt(localStorage.getItem('visitorCount')) || 0;
+        visitorCount++;
+        localStorage.setItem('visitorCount', visitorCount);
+
+        // Ziyaretçi numarasını ekrana yazdırma
+        document.getElementById('counter').textContent = `bu sayty jemi zyyarat eden adam: ${visitorCount}`;
+
+        // Rastgele yazı tipi seçimi
+        const fonts = [
+            'Arial, sans-serif', 'Verdana, sans-serif', 'Courier New, monospace', 'Georgia, serif',
+            'Times New Roman, serif', 'Trebuchet MS, sans-serif', 'Comic Sans MS, cursive',
+            'Impact, sans-serif', 'Lucida Console, monospace', 'Tahoma, sans-serif',
+            'Garamond, serif', 'Courier, monospace', 'Palatino Linotype, serif', 'Consolas, monospace',
+            'Arial Black, sans-serif', 'Segoe UI, sans-serif', 'Helvetica, sans-serif', 'Georgia, serif',
+            'Verdana, sans-serif', 'Roboto, sans-serif', 'Open Sans, sans-serif', 'Lora, serif'
+        ];
+
+        function getRandomFont() {
+            return fonts[Math.floor(Math.random() * fonts.length)];
+        }
+
+        document.getElementById('counter').style.fontFamily = getRandomFont();
+    </script>
+</body>
+</html>
